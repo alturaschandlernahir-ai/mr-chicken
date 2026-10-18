@@ -1,0 +1,302 @@
+{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #17110d;
+  color: #fff0db;
+}
+
+header {
+  background: #24170f;
+  padding: 16px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo, footer h3 {
+  color: #ffb43b;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 14px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #ffb43b;
+}
+
+.hero {
+  padding: 60px 7%;
+  min-height: 330px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, #21140df0, #21140d55),
+    url('https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1200&q=80')
+    center/cover;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 8vw, 65px);
+  color: #ffb43b;
+  margin: 12px 0;
+}
+
+.hero h2 {
+  color: white;
+}
+
+.hero p {
+  line-height: 1.7;
+}
+
+.btn {
+  background: #ffad32;
+  color: #27170a;
+  border: 0;
+  border-radius: 25px;
+  padding: 12px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.btn:hover {
+  background: #ffc566;
+}
+
+section {
+  padding: 35px 5%;
+}
+
+section h2 {
+  color: #ffb43b;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: #d6bda2;
+  margin-bottom: 22px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #2b1d14;
+  border: 1px solid #76502b;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 14px;
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.card p {
+  color: #d9c5ad;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.price {
+  color: #ffb43b;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background: #ffb43b;
+  color: #27170a;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+.card .btn {
+  width: 100%;
+}
+
+.promo, .cart {
+  background: #2b1d14;
+  border: 1px solid #76502b;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.promo {
+  text-align: center;
+  background: #422713;
+  border: 2px solid #79502d;
+  border-radius: 20px;
+  padding: 25px;
+  margin: 30px auto;
+  max-width: 650px;
+}
+
+.promo-image {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 20px auto;
+}
+
+.promo h2 {
+  color: #ffb02e;
+  margin: 15px 0;
+}
+
+.promo p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.promo .price {
+  color: #ffb02e;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #59402b;
+}
+
+.cart-row button {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.cart-total {
+  margin-top: 18px;
+}
+
+#total {
+  color: #ffb43b;
+}
+
+.order-box {
+  margin-top: 18px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 7px 0 15px;
+  border: 1px solid #76502b;
+  border-radius: 8px;
+  background: #1d140f;
+  color: white;
+}
+
+#status {
+  color: #ffcf76;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-top: 15px;
+}
+
+.about-text {
+  line-height: 1.8;
+}
+
+footer {
+  background: #24170f;
+  padding: 25px 5%;
+  color: #e5cdb0;
+  line-height: 1.9;
+  font-size: 13px;
+  text-align: center;
+  font-weight: normal;
+}
+
+footer h3 {
+  font-size: 22px;
+}
+
+@media (max-width: 520px) {
+  header {
+    padding: 14px 4%;
+  }
+
+  nav {
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 40px 5%;
+    min-height: 280px;
+  }
+
+  section {
+    padding: 28px 4%;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .card img {
+    height: 115px;
+  }
+
+  .card-body {
+    padding: 9px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+  }
+
+  .card p {
+    font-size: 12px;
+  }
+
+  .card .btn {
+    padding: 10px 4px;
+    font-size: 12px;
+  }
+}

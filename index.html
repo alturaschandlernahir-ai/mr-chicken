@@ -1,0 +1,104 @@
+<!-- dire mag start ang website og pag connect sa Css -->
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr.Chicken Lechon Manok</title>
+<link rel="stylesheet" href="Styles.css">
+</head>
+
+<body>
+    <!-- dire Makita ang logo og name sa website -->
+<header>
+  <div class="logo"> Mr.Chicken</div>
+  <!-- dire nimo makita ang home,menu,cart,about -->
+  <nav>
+    <a href="#home">Home</a><img src="" alt="">
+    <a href="#menu">Menu</a>
+    <a href="#cart">Cart</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+<!--dire Makita ang ang background picture,slogan ,og order now button  -->
+<section class="hero" id="home">
+  <div>
+    <p>FRESH • JUICY • DELICIOUS</p>
+    <h1>Mr.Chicken</h1>
+    <h2>Lechon Manok!</h2>
+    <p>"Lutong Sarap, Presyong Tapat!
+Sa Bawat Kagat, Sarap ang Katapat" </p>
+    <button class="btn" onclick="document.getElementById('menu').scrollIntoView()">ORDER NOW</button>
+  </div>
+</section>
+<!-- dire Makita ang menu mga product -->
+<section id="menu">
+  <h2>Our Signature Products</h2>
+  <p class="subtitle">Tikman ang kakaibang sarap ng Mr.Chicken!</p>
+  <div class="products" id="products"></div>
+</section>
+
+<!-- dire Makita ang promo, picture, price of box butoon -->
+<section class="promo" id="barkada-feast">
+  <span class="tag">BARKADA FAVORITE</span>
+
+  <img
+    src="Manok.png"
+    alt="2 Lechon Manok, 4 Rice, 4 Drinks and Special Sauce"
+    class="promo-image"
+  >
+
+  <h2>Barkada Feast Box</h2>
+
+  <div class="price">₱699</div>
+
+  <button class="btn" onclick="addToCart(5)">
+    Add Feast Box
+  </button>
+</section>
+
+
+
+<section id="cart">
+  <h2>Your Cart </h2>
+  <p class="subtitle">Tingnan ang iyong order.</p>
+  <div class="cart">
+    <div id="cart-items">Wala pang laman ang iyong cart.</div>
+    <h3 class="cart-total">Total: <span id="total">₱0.00</span></h3>
+  </div>
+
+  <div class="cart order-box">
+    <h3>Order Information</h3>
+    <form id="order-form">
+      <label for="customer">Pangalan</label>
+      <input id="customer" required placeholder="Ilagay ang pangalan">
+
+      <label for="phone">Contact Number</label>
+      <input id="phone" type="tel" required placeholder="09XXXXXXXXX">
+
+      <label for="address">Delivery Address o Pickup Details</label>
+      <textarea id="address" required rows="3" placeholder="Ilagay ang address"></textarea>
+
+      <button class="btn" type="submit">Prepare My Order</button>
+    </form>
+    <p id="status"></p>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Mr.Chicken</h2>
+  <p class="about-text">Ang Mr.Chicken ay isang lechon manok business concept na nag-aalok ng classic roast, special flavors, at sulit na meal bundles para sa pamilya at barkada.</p>
+</section>
+
+<footer>
+  <h3> Mr.Chicken</h3>
+  <p>Lechon Manok & More!</p>
+  <p>Address: Manolo Fortich Bukidnon</p>
+  <p>Contact: 09512586099</p>
+  <p>Business Hours: 24/7</p>
+  <p>© 2026 Mr.Chicken. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
