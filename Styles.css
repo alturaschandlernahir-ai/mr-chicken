@@ -502,3 +502,105 @@ footer h3 {
   padding: 4px 10px;
   font-size: 11px;
 }
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr.Chicken | About Us</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">Mr.Chicken</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#menu">Menu</a>
+            <a href="index.html#cart">Cart</a>
+            <a href="about.html" class="active">About</a>
+        </nav>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-title-section">
+        <h1>ABOUT MR.CHICKEN</h1>
+        <p>"Lutong Sarap, Presyong Tapat! Sa Bawat Kagat, Sarap ang Katapat"</p>
+    </section>
+
+    <!-- Main About Content -->
+    <section class="section container">
+        <div class="about-card">
+            <h2>Ang Aming Kwento</h2>
+            <p>
+                Ang <strong>Mr.Chicken</strong> ay nagsimula sa simpleng pangarap — ang maghatid ng pinakamasarap, pinakamalinamnam, at pinaka-juicy na lechon manok sa bawat pamilya at barkada sa Manolo Fortich, Bukidnon. 
+            </p>
+            <p>
+                Gawa sa mga sariwang manok at niluto gamit ang aming katangi-tanging timpla ng mga rekado at pampalasa, tinitiyak namin na ang bawat kagat ay puno ng lasa at sarap na babalik-balikan ninyo.
+            </p>
+
+            <h2>Bakit Mr.Chicken?</h2>
+            <ul class="about-highlights">
+                <li><strong>Fresh & Juicy:</strong> Araw-araw bago at sariwa ang aming inihahandang manok.</li>
+                <li><strong>Presyong Tapat:</strong> Sulit at abot-kayang presyo para sa pamilya at barkada bundles.</li>
+                <li><strong>24/7 Service:</strong> Laging handang magsilbi anumang oras ng iyong pagkahilig sa masarap na pagkain!</li>
+            </ul>
+
+            <div class="about-action">
+                <a href="index.html#menu" class="btn">Tingnan ang Aming Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developers Section -->
+    <section class="developers-section">
+        <h2>MEET OUR DEVELOPERS</h2>
+        <p class="developers-subtitle">The team behind Mr.Chicken website project.</p>
+
+        <div class="developers-container">
+            <!-- DEVELOPER 1: JEREX -->
+            <div class="developer-card">
+                <img src="Image/jerex.jpg" alt="Jerex">
+                <h3>Jerex</h3>
+                <h4>Lead Frontend Developer</h4>
+                <div class="dev-info">
+                    <p><strong>Age:</strong> 21</p>
+                    <p><strong>Address:</strong> Tankulan, Manolo Fortich, Bukidnon</p>
+                </div>
+            </div>
+
+            <!-- DEVELOPER 2: DATU -->
+            <div class="developer-card">
+                <img src="Image/Datu.png" alt="Datu">
+                <h3>Datu</h3>
+                <h4>Co-Developer & UI Designer</h4>
+                <div class="dev-info">
+                    <p><strong>Age:</strong> 20</p>
+                    <p><strong>Address:</strong> Camp 1, Manolo Fortich, Bukidnon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location / Map Section -->
+    <section class="map-section">
+        <h2>AMING LOKASYON</h2>
+        <p class="developers-subtitle">Bisitahin o i-track ang aming delivery area.</p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37519.99810680929!2d124.79758618329348!3d8.327693452600847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32ff970029d74e7f%3A0xe175af92a8e40089!2sCrossing%20libona!5e1!3m2!1sen!2sph!4v1792328996645!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>Mr.Chicken</h3>
+        <p>Lechon Manok & More!</p>
+        <p>Address: Manolo Fortich, Bukidnon</p>
+        <p>Contact: 09512586099</p>
+        <p>Business Hours: 24/7</p>
+        <p>© 2026 Mr.Chicken. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

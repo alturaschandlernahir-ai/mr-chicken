@@ -3,82 +3,70 @@ const products = [
     id: 1,
     name: "Classic Lechon Manok",
     desc: "Original na lasa, malinamnam at juicy.",
-    price: 220,
+    price: 320,
     tag: "BEST SELLER",
-    img: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=600&q=80"
+    image: "Image/Classic letchon manok.jpg"
   },
   {
     id: 2,
-    name: "Lava Chicken",
-    desc: "Sweet and spicy para sa mahilig sa anghang.",
-    price: 250,
+    name: "Sweet and Spicy Lechon Manok",
+    desc: "Glazed with our special sweet and chili blend for an extra kick.",
+    price: 340,
     tag: "SPICY",
-    img: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80"
+    image: "Image/Sweet and spicy letchon manok.jpg"
   },
   {
     id: 3,
-    name: "Honey Garlic Roast",
-    desc: "Matamis at mabangong garlic flavor.",
-    price: 250,
+    name: "Lechon Manok and BBQ",
+    desc: "Perfect combo of savory Lechon Manok and smoky grilled BBQ skewers.",
+    price: 380,
     tag: "SIGNATURE",
-    img: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=600&q=80"
+    image: "Image/letchon Manok and BBQ.jpg"
   },
   {
     id: 4,
-    name: "Calamansi Zing",
-    desc: "Maasim-asim at mabango.",
-    price: 250,
-    tag: "NEW",
-    img: "https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 6,
-    name: "Solo Chicken Rice Bowl",
-    desc: "Hiniwang manok at kanin na may sauce.",
-    price: 99,
-    tag: "BUDGET MEAL",
-    img: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80"
+    name: "Family Combo",
+    desc: "2 Lechon Manok, 4 Rice, 4 Drinks, and Special Sauce.",
+    price: 699,
+    tag: "FAMILY FAVORITE",
+    image: "Image/Family combo.jpg"
   }
 ];
-
-const feastBox = {
-  id: 5,
-  name: "Barkada Feast Box",
-  price: 699
-};
 
 let cart = {};
 
 function getProduct(id) {
-  if (Number(id) === feastBox.id) {
-    return feastBox;
-  }
   return products.find(p => p.id === Number(id));
 }
 
 function renderProducts() {
-  document.getElementById("products").innerHTML =
-    products.map(p => `
-      <div class="card">
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
-        <div class="card-body">
-          <span class="tag">${p.tag}</span>
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <div class="price">₱${p.price.toFixed(2)}</div>
-          <button class="btn" onclick="addToCart(${p.id})">
-            + Add to Cart
-          </button>
-        </div>
+  const container = document.getElementById("products");
+  if (!container) return;
+
+  container.innerHTML = products.map(p => `
+    <div class="card product-card">
+      <img src="${p.image}" alt="${p.name}" class="product-img" loading="lazy">
+      <div class="card-body">
+        <span class="tag">${p.tag}</span>
+        <h3>${p.name}</h3>
+        <p class="product-desc">${p.desc}</p>
+        <div class="price">₱${p.price.toFixed(2)}</div>
+        <button class="btn" onclick="addToCart(${p.id})">
+          + Add to Cart
+        </button>
       </div>
-    `).join("");
+    </div>
+  `).join("");
 }
 
 function addToCart(id) {
   cart[id] = (cart[id] || 0) + 1;
   renderCart();
-  document.getElementById("status").textContent =
-    "Naidagdag sa cart ang " + getProduct(id).name + ".";
+  const product = getProduct(id);
+  if (product) {
+    document.getElementById("status").textContent =
+      "Naidagdag sa cart ang " + product.name + ".";
+  }
 }
 
 function changeQty(id, amount) {
@@ -92,72 +80,84 @@ function changeQty(id, amount) {
 function renderCart() {
   const entries = Object.entries(cart);
   const container = document.getElementById("cart-items");
+  const totalContainer = document.getElementById("total");
+
+  if (!container || !totalContainer) return;
 
   if (entries.length === 0) {
-    container.textContent = "Wala pang laman ang iyong cart.";
-  } else {
-    container.innerHTML = entries.map(([id, qty]) => {
-      const p = getProduct(id);
-      return `
-        <div class="cart-row">
-          <div>
-            <strong>${p.name}</strong><br>
-            <span style="color:#ffb43b">
-              ₱${(p.price * qty).toFixed(2)}
-            </span>
-          </div>
-          <div>
-            <button type="button" onclick="changeQty(${id}, -1)">−</button>
-            ${qty}
-            <button type="button" onclick="changeQty(${id}, 1)">+</button>
-          </div>
-        </div>
-      `;
-    }).join("");
-  }
-
-  const total = entries.reduce((sum, [id, qty]) => {
-    return sum + getProduct(id).price * qty;
-  }, 0);
-
-  document.getElementById("total").textContent =
-    "₱" + total.toLocaleString("en-PH", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
-}
-
-document.getElementById("order-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  if (Object.keys(cart).length === 0) {
-    document.getElementById("status").textContent =
-      "Magdagdag muna ng produkto sa cart.";
+    container.innerHTML = "Wala pang laman ang iyong cart.";
+    totalContainer.innerText = "₱0.00";
     return;
   }
 
-  const name = document.getElementById("customer").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
-
-  const lines = Object.entries(cart).map(([id, qty]) => {
+  container.innerHTML = entries.map(([id, qty]) => {
     const p = getProduct(id);
-    return p.name + " x " + qty + " = ₱" + (p.price * qty).toFixed(2);
-  });
+    if (!p) return '';
+    return `
+      <div class="cart-row cart-item">
+        <div>
+          <strong>${p.name}</strong><br>
+          <span style="color:#ffb43b">
+            ₱${(p.price * qty).toFixed(2)}
+          </span>
+        </div>
+        <div>
+          <button type="button" onclick="changeQty(${id}, -1)">−</button>
+          ${qty}
+          <button type="button" onclick="changeQty(${id}, 1)">+</button>
+        </div>
+      </div>
+    `;
+  }).join("");
 
-  const total = Object.entries(cart).reduce((sum, [id, qty]) => {
-    return sum + getProduct(id).price * qty;
+  const total = entries.reduce((sum, [id, qty]) => {
+    const p = getProduct(id);
+    return sum + (p ? p.price * qty : 0);
   }, 0);
 
-  document.getElementById("status").textContent =
-    "ORDER SUMMARY\n" +
-    "Pangalan: " + name +
-    "\nContact: " + phone +
-    "\nAddress/Pickup: " + address +
-    "\n\n" + lines.join("\n") +
-    "\n\nTOTAL: ₱" + total.toFixed(2) +
-    "\n\nHindi pa naipapadala ang order na ito sa tindahan.";
-});
+  totalContainer.innerText = "₱" + total.toLocaleString("en-PH", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
 
-renderProducts();
-renderCart();
+document.addEventListener("DOMContentLoaded", () => {
+  renderProducts();
+  renderCart();
+
+  const orderForm = document.getElementById("order-form");
+  if (orderForm) {
+    orderForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      if (Object.keys(cart).length === 0) {
+        document.getElementById("status").textContent =
+          "Magdagdag muna ng produkto sa cart.";
+        return;
+      }
+
+      const name = document.getElementById("customer").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+
+      const lines = Object.entries(cart).map(([id, qty]) => {
+        const p = getProduct(id);
+        return p.name + " x " + qty + " = ₱" + (p.price * qty).toFixed(2);
+      });
+
+      const total = Object.entries(cart).reduce((sum, [id, qty]) => {
+        const p = getProduct(id);
+        return sum + (p ? p.price * qty : 0);
+      }, 0);
+
+      document.getElementById("status").innerText =
+        "ORDER SUMMARY\n" +
+        "Pangalan: " + name +
+        "\nContact: " + phone +
+        "\nAddress/Pickup: " + address +
+        "\n\n" + lines.join("\n") +
+        "\n\nTOTAL: ₱" + total.toFixed(2) +
+        "\n\nHindi pa naipapadala ang order na ito sa tindahan.";
+    });
+  }
+});
